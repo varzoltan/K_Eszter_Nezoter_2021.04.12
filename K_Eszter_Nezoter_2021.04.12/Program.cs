@@ -43,6 +43,51 @@ namespace K_Eszter_Nezoter_2021._04._12
             Console.WriteLine("1.feladat\nBeolvasás kész!");
 
             //2.feladat
+            Console.WriteLine("2.feladat");
+            Console.Write("Kérem adja meg a sor számát: ");
+            string sor1 = Console.ReadLine();
+            Console.Write("Kérem adja meg a szék számát: ");
+            string szek = Console.ReadLine();
+            int szek1 = int.Parse(szek);
+            int sor2 = int.Parse(sor1);          
+            /*for (int i = 0; i<n;i++)
+            {
+                if (i == int.Parse(sor1)-1)
+                {
+                    if (adatok[i].foglaltsag.Substring(szek1-1,1) == "o")
+                    {
+                        Console.WriteLine("Az adott hely szabad!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Az adott hely foglalt!");
+                    }
+                }
+            }*/
+            //Szebbik megoldás
+            if (adatok[sor2 - 1].foglaltsag.Substring(szek1-1,1) == "o")
+            {
+                Console.WriteLine("Az adott hely szabad!");
+            }
+            else
+            {
+                Console.WriteLine("Az adott hely foglalt!");
+            }
+
+            //3.feladat
+            int foglalt_helyek = 0;
+            const int osszes_ulohely = 15 * 20;
+            for (int i = 0;i<n;i++)
+            {
+                for (int j = 0;j<20;j++)
+                {
+                    if (adatok[i].foglaltsag[j] == 'x')
+                    {
+                        foglalt_helyek++;
+                    }
+                }
+            }
+            Console.WriteLine($"3.feladat\nAz előadásra eddig {foglalt_helyek} jegyet adtak el, ez a nézőtér {((double)foglalt_helyek / osszes_ulohely * 100).ToString("0")}%-a.");
             Console.ReadKey();
         }
     }

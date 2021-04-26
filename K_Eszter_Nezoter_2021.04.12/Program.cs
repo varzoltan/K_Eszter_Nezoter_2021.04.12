@@ -88,6 +88,101 @@ namespace K_Eszter_Nezoter_2021._04._12
                 }
             }
             Console.WriteLine($"3.feladat\nAz előadásra eddig {foglalt_helyek} jegyet adtak el, ez a nézőtér {((double)foglalt_helyek / osszes_ulohely * 100).ToString("0")}%-a.");
+
+            //4.feladat
+            int egy = 0, ketto = 0, harom = 0, negy = 0, ot = 0 ;
+            for (int i = 0;i<n;i++)
+            {
+                for (int j = 0; j<adatok[i].foglaltsag.Length;j++)
+                {
+                    if (adatok[i].foglaltsag[j] == 'x' && adatok[i].kategoria[j] == '1')
+                    {
+                        egy++;
+                    }
+                    if (adatok[i].foglaltsag[j] == 'x' && adatok[i].kategoria[j] == '2')
+                    {
+                        ketto++;
+                    }
+                    if (adatok[i].foglaltsag[j] == 'x' && adatok[i].kategoria[j] == '3')
+                    {
+                        harom++;
+                    }
+                    if (adatok[i].foglaltsag[j] == 'x' && adatok[i].kategoria[j] == '4')
+                    {
+                        negy++;
+                    }
+                    if (adatok[i].foglaltsag[j] == 'x' && adatok[i].kategoria[j] == '5')
+                    {
+                        ot++;
+                    }
+                }
+            }
+            int[] kategoria_max = { egy, ketto, harom, negy, ot };
+            //maxkeresés
+            int max = -1,index = -1;
+            for (int i = 0;i<kategoria_max.Length;i++)
+            {
+                if (max<kategoria_max[i])
+                {
+                    max = kategoria_max[i];
+                    index = i;
+                }
+                Console.Write(kategoria_max[i]+" ");
+            }
+            Console.WriteLine($"A legtöbb jegyet a(z) {index + 1}. árkategóriában értékesítették.");
+
+            //5.feladat
+            int osszeg = 0;
+            for (int i = 0;i<kategoria_max.Length;i++)
+            {
+                if (i==0)
+                {
+                    osszeg = osszeg + kategoria_max[i] * 5000;
+                }
+                else if (i == 1)
+                {
+                    osszeg += kategoria_max[i] * 4000;
+                }
+                else if (i == 2)
+                {
+                    osszeg = osszeg + kategoria_max[i] * 3000;
+                }
+                else if (i == 3)
+                {
+                    osszeg = osszeg + kategoria_max[i] * 2000;
+                }
+                else
+                {
+                    osszeg = osszeg + kategoria_max[i] * 1500;
+                }
+            }
+            Console.WriteLine($"5.feladat\nA színház pillanatnyi bevétele: {osszeg} Ft.");
+
+            //6.feladat
+            int o = 0;
+            int szamol = 0;
+            for (int i = 0;i<n;i++)
+            {
+                o = 0;
+                for (int j = 0;j<20;j++)
+                {
+                    if (adatok[i].foglaltsag[j] == 'o')
+                    {
+                        o++;
+                        if (j == 19)
+                        {
+                            szamol += o / 2;
+                            //o = 0;
+                        }
+                    }
+                    else
+                    {
+                        szamol = szamol + o / 2;
+                        o = 0;
+                    }
+                }
+            }
+            Console.WriteLine($"6.feladat\n{szamol} db egyedülálló hely van.");
             Console.ReadKey();
         }
     }

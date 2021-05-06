@@ -21,7 +21,7 @@ namespace K_Eszter_Nezoter_2021._04._12
             Adat[] adatok  = new Adat[15];
 
             //Beolvasás
-            StreamReader olvas = new StreamReader(@"E:\OneDrive - Kisvárdai SZC Móricz Zsigmond Szakgimnáziuma és Szakközépiskolája\Oktatas\Programozas\Jakab_Acs_Eszter\Erettsegi_feladatok\2014-oktober_uj\foglaltsag.txt");
+            StreamReader olvas = new StreamReader(@"C:\Users\Rendszergazda\Desktop\K_eszter_prog_erettsegi\Nezoter\foglaltsag.txt");
             int n  =  0;
             while (!olvas.EndOfStream)
             {
@@ -31,7 +31,7 @@ namespace K_Eszter_Nezoter_2021._04._12
             }
             olvas.Close();
             
-            StreamReader olvas2 = new StreamReader(@"E:\OneDrive - Kisvárdai SZC Móricz Zsigmond Szakgimnáziuma és Szakközépiskolája\Oktatas\Programozas\Jakab_Acs_Eszter\Erettsegi_feladatok\2014-oktober_uj\kategoria.txt");
+            StreamReader olvas2 = new StreamReader(@"C:\Users\Rendszergazda\Desktop\K_eszter_prog_erettsegi\Nezoter\kategoria.txt");
             n = 0;
             while (!olvas2.EndOfStream)
             {
@@ -183,6 +183,26 @@ namespace K_Eszter_Nezoter_2021._04._12
                 }
             }
             Console.WriteLine($"6.feladat\n{szamol} db egyedülálló hely van.");
+
+            //7.feladat
+            StreamWriter ir = new StreamWriter(@"C:\Users\Rendszergazda\Desktop\K_eszter_prog_erettsegi\Nezoter\szabad.txt");
+            for (int i = 0;i<adatok.Length;i++)
+            {
+                for (int j = 0;j<adatok[i].foglaltsag.Length;j++)
+                {
+                    if (adatok[i].foglaltsag[j] == 'x')
+                    {
+                        ir.Write("x");
+                    }
+                    else
+                    {
+                        ir.Write(adatok[i].kategoria[j]);
+                    }
+                }
+                ir.WriteLine();//soremelés
+            }
+            ir.Close();
+            Console.WriteLine("7.feladat\nKiírás kész!");
             Console.ReadKey();
         }
     }
